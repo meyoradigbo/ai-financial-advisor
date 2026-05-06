@@ -1,5 +1,14 @@
-class BaseAgent:
+import logging
+from abc import ABC, abstractmethod
+
+logging.basicConfig(level=logging.INFO)
+
+class BaseAgent(ABC):
     name = "BaseAgent"
 
+    @abstractmethod
     def run(self, data: dict) -> dict:
-        raise NotImplementedError
+        pass
+
+    def log(self, message: str):
+        logging.info(f"[{self.name}] {message}")
